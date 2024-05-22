@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+<div id="v-model-databinding">
+    <label>用户名：<input v-model="uname"></label>
+    <p>输入的用户名是{{uname}}</p>
+    <label>个人简介：<textarea v-model="introduction"></textarea></label>
+    <p>输入的简介是{{introduction}}</p>
+    <p>备选歌手：
+        <input type="checkbox" id="zhangsan" value="张三" v-model="singers">
+        <label for="zhangsan">张三</label>
+        <input type="checkbox" id="lisi" value="李四" v-model="singers">
+        <label for="lisi">李四</label>
+        <input type="checkbox" id="wangwu" value="王五" v-model="singers">
+        <label for="wangwu">王五</label>
+        <input type="checkbox" id="chenheng" value="陈恒" v-model="singers">
+        <label for="chenheng">陈恒</label>
+    </p>
+    <p>你喜欢的歌手：{{singers}}</p>
+</div>
+</body>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                uname: '',
+                introduction: '',
+                singers: []
+            }
+        }
+    }).mount("#v-model-databinding")
+</script>
+</html>

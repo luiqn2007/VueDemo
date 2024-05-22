@@ -18,14 +18,12 @@
 </div>
 </body>
 <script>
-    const helloApp = {
+    Vue.createApp({
         data() {
             return {
                 score: 0
             }
         }
-    }
-    const app = Vue.createApp(helloApp)
-    const vm = app.mount("#v-if-handling")
+    }).mount("#v-if-handling")
 </script>
 </html>
