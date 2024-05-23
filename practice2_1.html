@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+<div id="triangle">
+    <p><label>数字1：<input v-model="a"></label></p>
+    <p><label>数字2：<input v-model="b"></label></p>
+    <p><label>数字3：<input v-model="c"></label></p>
+    <p>是否构成三角形：{{is_triangle}}</p>
+</div>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                a: 1,
+                b: 1,
+                c: 1
+            }
+        },
+        computed: {
+            is_triangle() {
+                le = [this.a, this.b, this.c].sort()
+                return le[0] + le[1] > le[2]
+            }
+        }
+    }).mount('#triangle')
+</script>
+</body>
+</html>
