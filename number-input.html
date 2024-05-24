@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <number-input-com></number-input-com>
+</div>
+
+<template id="number-input">
+    <input @change="handleChange" :value="num">
+    <button @click="handleUp">+</button>
+    <button @click="handleDown">-</button>
+    <p>{{num % 2 ? '是奇数' : '是偶数'}}</p>
+</template>
+
+<script>
+    function isValueNumber(value) {
+        return (/^[1-9]\d*$/).test(value)
+    }
+
+    Vue.createApp({})
+        .component('number-input-com', {
+            data() {
+                return {
+                    num: 1
+                }
+            },
+            methods: {
+                handleChange(event) {
+                    const v = event.target.value.trim()
+                    if (isValueNumber(v)) {
+                        this.num = Number(v)
+                    } else {
+                        event.target.value = this.num
+                    }
+                },
+                handleUp() {
+                    this.num++
+                },
+                handleDown() {
+                    if (this.num > 1) {
+                        this.num--
+                    }
+                }
+            },
+            template: '#number-input'
+        })
+        .mount('#app')
+</script>
+
+</body>
+</html>
