@@ -5,17 +5,32 @@
     <title>Title</title>
     <script src="js/vue.global.js"></script>
     <style>
-        .container
+        .container {
+            width: 270px;
+            margin-top: 10px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .cell {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            outline: 1px solid #aaa;
+        }
+
+        .cell-move {
+            transition: 0.5s;
+        }
     </style>
 </head>
 <body>
 
-<div id="list-app">
-    <button @click="add">随机添加元素</button>&nbsp;&nbsp;
-    <button @click="del">随机删除元素</button>
+<div id="cell-app">
+    <button @click="shuffle">多维列表变换</button>&nbsp;&nbsp;
 
-    <transition-group name="list" tag="p">
-        <span v-for="item in items" :key="item" class="list-item">{{item}}</span>
+    <transition-group name="cell" tag="div" class="container">
+        <span v-for="cell in cells" :key="cell.id" class="cell">{{cell.number}}</span>
     </transition-group>
 </div>
 
@@ -23,22 +38,17 @@
     Vue.createApp({
         data() {
             return {
-                items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-                next: 10
+                cells: Array
+                    .apply(null, { length: 81 })
+                    .map((_, idx) => { return {id: idx, number: idx % 9 + 1} })
             }
         },
         methods: {
-            randomIndex() {
-                return Math.floor(Math.random() * this.items.length)
-            },
-            add() {
-                this.items.splice(this.randomIndex(), 0, this.next++)
-            },
-            del() {
-                this.items.splice(this.randomIndex(), 1)
+            shuffle() {
+                this.cells = this.cells.sort(_ => Math.random() - 0.5)
             }
         }
-    }).mount('#list-app')
+    }).mount('#cell-app')
 </script>
 
 </body>
