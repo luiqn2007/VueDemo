@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.global.js"></script>
+</head>
+<body>
+
+<script>
+    const data = {
+        uname: 'chenheng',
+        age: 90
+    }
+
+    const handler = {
+        get(target, name, receiver) {
+            console.log('get')
+            return Reflect.get(...arguments)
+        },
+        set(target, name, value, receiver) {
+            console.log('set')
+            return Reflect.set(...arguments)
+        }
+    }
+
+    const proxy = new Proxy(data, handler)
+
+    console.log(proxy.uname)
+    proxy.uname = 'hhhhh'
+    console.log(proxy.uname)
+</script>
+
+</body>
+</html>

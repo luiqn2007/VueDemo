@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.global.js"></script>
+</head>
+<body>
+
+<script>
+    let book = Vue.reactive({
+        title: 'SSM + Spring Boot + Vue.js 3 全栈开发从入门到实战（微课视频版）',
+        author: '陈恒'
+    })
+
+    Vue.watchEffect(() => {
+        console.log(`watched ${book.title}`)
+    })
+
+    book.title = 'Vue.js 3 从入门到实战（微课视频版）'
+</script>
+
+</body>
+</html>
