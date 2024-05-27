@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>响应式侦听</title>
+    <script src="../js/vue.global.js"></script>
+</head>
+<body>
+
+<script>
+    import {reactive} from "../js/vue.global";
+
+    const count = Vue.ref(0)
+    // 添加侦听器
+    Vue.watchEffect(() => console.log(count.value))
+    // 修改 count 验证
+    setTimeout(() => count.value++, 100)
+
+    const stop = Vue.watchEffect(onInvalidate => {
+        // do something ...
+        onInvalidate(() => {
+            // do something clean
+        })
+    }, {
+        onTrack: e => console.log(e),
+        onTrigger: e => console.log(e)
+    })
+    // 停止监听
+    stop()
+
+    const state = reactive({ count: 0 })
+    Vue.watch(() => state.count, (newValue, oldValue) => {
+        // do something
+    })
+    const title = Vue.ref('')
+    Vue.watch([() => state.count, title], ([newCount, newTitle], [oldCount, oldTitle]) => {
+        // do something
+    })
+</script>
+
+</body>
+</html>

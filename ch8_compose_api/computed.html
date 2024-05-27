@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>响应式计算属性</title>
+    <script src="../js/vue.global.js"></script>
+</head>
+<body>
+
+<script>
+    const count = Vue.ref(0)
+
+    const plusOne = Vue.computed(() => count.value + 1)
+    console.log(plusOne.value)
+
+    const plusOne2 = Vue.computed({
+        get: () => count.value + 1,
+        set: val => count.value = val - 1
+    })
+    plusOne2.value = 5
+    console.log(plusOne2.value)
+</script>
+
+</body>
+</html>
