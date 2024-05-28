@@ -8,6 +8,6 @@ module.exports = {
         publicPath: './dist/'
     },
     devServer: {
-        static: '../first-demo'
+        static: '../single-entry'
     }
 }
