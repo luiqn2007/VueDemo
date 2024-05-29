@@ -13,6 +13,11 @@ const routes = [
         path: '/second/:uname/:pwd',
         name: 'second',
         component: SecondView
+    },
+    {
+        path: '/route-details/:uname/post/:pwd/post/:age',
+        name: 'route-details',
+        component: () => import('@/views/RouteObjectView.vue')
     }
 ]
 

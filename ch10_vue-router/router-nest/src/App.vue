@@ -1,9 +1,10 @@
 <template>
   <nav>
-    <router-link to="/first?uname=chenheng&pwd=123456">第一个页面</router-link> |
-    <router-link to="/second/shenheng1/654321">第二个页面</router-link>
+    <router-link to="/">首页</router-link> |
+    <router-link to="/about">关于我们</router-link> |
+    <router-link to="/product">产品介绍</router-link>
   </nav>
-  <router-view />
+  <router-view class="my-view"/>
 </template>
 
 <style>
@@ -26,5 +27,14 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.my-view {
+  width: 500px;
+  margin: 0 auto;
+  text-indent: 2em;
+  text-align: left;
+  padding: 5px 10px;
+  border: 1px dashed #42b983;
 }
 </style>
