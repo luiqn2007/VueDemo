@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/vue.global.js"></script>
+</head>
+<body>
+    <div id="counter">
+        {{ counter }}
+        <button @click="increment">+</button>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                increment() {
+                    this.counter++
+                }
+            }
+        }).mount('#counter')
+    </script>
+</body>
+</html>
